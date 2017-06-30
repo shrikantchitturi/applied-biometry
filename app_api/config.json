@@ -1,0 +1,11 @@
+{
+   "databases":{
+       "userdb":{
+           "path":"postgres://abiomshiny:abiomshiny@198.199.100.144:5432/abiomshiny"
+       },
+       "snpreq":{
+           "path":"postgres://appliedbio:appliedbio@appliedbio.c5mv4lvokrd2.us-east-2.rds.amazonaws.com:5432/appliedbio"
+       }
+   }
+}
+

@@ -105,7 +105,15 @@ app.use(function(err, req, res, next) {
     });
 });
 
-db.sequelize.sync({}).then(function(){
+// db.sequelize.sync({}).then(function(){
+//     console.log('Everything is synched');
+// })
+
+db.userdb.sync({}).then(function(){
+    console.log('Everything is synched');
+})
+
+db.snpreq.sync({}).then(function(){
     console.log('Everything is synched');
 })
 
