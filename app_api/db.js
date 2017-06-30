@@ -4,8 +4,8 @@ var Sequelize = require('sequelize');
 
 
 //postgres://YourUserName:YourPassword@localhost:5432/YourDatabase
-var postgresUrl = "postgres://appliedbio:appliedbio@appliedbio.c5mv4lvokrd2.us-east-2.rds.amazonaws.com:5432/appliedbio";
-//var postgresUrl = "postgres://snpreq:snpreq@104.236.72.76:5432/snpreq";
+//var postgresUrl = "postgres://appliedbio:appliedbio@appliedbio.c5mv4lvokrd2.us-east-2.rds.amazonaws.com:5432/appliedbio";
+var postgresUrl = "postgres://snpreq:snpreq@104.236.72.76:5432/snpreq";
 
 var sequelize = new Sequelize(postgresUrl,{
      'dialect':'postgres',

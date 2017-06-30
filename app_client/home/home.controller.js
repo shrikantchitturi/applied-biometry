@@ -49,35 +49,66 @@
     var data = [{ rs: "rs1065852", gene: "CYP2D6", summary: "CYP2D6 drug metabolism", missens: "T/C", variant: "TC", annotation: "reduced, intermediate, CYP2D6 function consider use of the following guidelines imipramine: use 80% of standard dosing doxepin: use 80% of standard dosing trimipramine: use 90% of standard dosing desipramine: use 80% of standard dosing nortripyline: use 95% of standard dosing clomipramine: use 90% of standard dosing paroxetine: use 85% of standard dosing venlafaxine: use 80% of standard dosing amitriptyline; use 90% of standard dosing bupropion: use 95% of standard dosing perphenazine: use 80% of standard dosing haloperidol: use 95% of standard dosing olanzapine: use 105% of standard dosing risperidone: use 90% of standard dosing" } /*,*/];
     self.tableParams = new NgTableParams({}, { dataset: data });
 
-    self.wikiTextParams = new NgTableParams({
+
+
+  
+
+    vm.wikiTextList = [];
+
+    this.getWikiTextList = function callServer(tableState) {
+
+      vm.isWikiTextLoading = true;
+
+      var pagination = tableState.pagination;
+
+      var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+      var number = pagination.number || 10;  // Number of entries showed per page.
+
+     
+      snpediaData.getWikiText(start,number,tableState)
+        .success(function (data) {
+          tableState.pagination.numberOfPages = 100;//set the number of pages so the pagination can update
+          vm.wikiTextList = data;
+          vm.isWikiTextLoading = false;
+        })
+        .error(function (e) {
+          vm.message = "Sorry, something's gone wrong, please try again later";
+        });
+    };
+
+
+
+    // self.wikiTextParams = new NgTableParams({
+    //   page: 1,            // show first page
+    //   count: 10,           // count per page
+    // }, {
+    //     getData: function (params) {
+    //       //vm.wikiTextList = [];
+    //       var offset = params.url().page;
+    //       var limit = params.url().count;
+    //       snpediaData.getWikiText(offset, limit)
+    //         .success(function (data) {
+    //           params.total(data.length);
+    //           return data;
+    //           //vm.wikiTextList = data;
+    //           //console.log(vm.wikiTextList);
+    //         })
+    //         .error(function (e) {
+    //           vm.message = "Sorry, something's gone wrong, please try again later";
+    //         });
+    //     }
+    //   });
+
+    self.wikiTagsParams = new NgTableParams({
     }, {
         counts: [],
         getData: function (params) {
-           vm.wikiTextList = [];
-           var offset = params.url().page;
-           var limit = params.url().count;
-           snpediaData.getWikiText(offset, limit)
+          vm.wikiTagsList = [];
+          var offset = params.url().page;
+          var limit = params.url().count;
+          snpediaData.getWikiTags(offset, limit)
             .success(function (data) {
-              params.total(data.length); 
-              vm.wikiTextList = data;
-              //console.log(vm.wikiTextList);
-            })
-            .error(function (e) {
-              vm.message = "Sorry, something's gone wrong, please try again later";
-            });
-        }
-      });
-
-       self.wikiTagsParams = new NgTableParams({
-        }, {
-        counts: [],
-        getData: function (params) {
-           vm.wikiTagsList = [];
-           var offset = params.url().page;
-           var limit = params.url().count;
-           snpediaData.getWikiTags(offset, limit)
-            .success(function (data) {
-              params.total(data.length); 
+              params.total(data.length);
               vm.wikiTagsList = data;
               console.log(vm.wikiTagsList);
             })
@@ -85,7 +116,10 @@
               vm.message = "Sorry, something's gone wrong, please try again later";
             });
         }
-       });
+      });
+
+
+    //
 
   }
 
