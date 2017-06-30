@@ -4,8 +4,8 @@
     .module('loc8rApp')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation', 'NgTableParams', 'snpediaData'];
-  function homeCtrl($scope, loc8rData, geolocation, NgTableParams, snpediaData) {
+  homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation', 'NgTableParams', 'snpediaData','pharmaReport'];
+  function homeCtrl($scope, loc8rData, geolocation, NgTableParams, snpediaData,pharmaReport) {
     // Nasty IE9 redirect hack (not recommended)
     if (window.location.pathname !== '/') {
       window.location.href = '/#' + window.location.pathname;
@@ -46,12 +46,28 @@
     };
 
     var self = this;
-    var data = [{ rs: "rs1065852", gene: "CYP2D6", summary: "CYP2D6 drug metabolism", missens: "T/C", variant: "TC", annotation: "reduced, intermediate, CYP2D6 function consider use of the following guidelines imipramine: use 80% of standard dosing doxepin: use 80% of standard dosing trimipramine: use 90% of standard dosing desipramine: use 80% of standard dosing nortripyline: use 95% of standard dosing clomipramine: use 90% of standard dosing paroxetine: use 85% of standard dosing venlafaxine: use 80% of standard dosing amitriptyline; use 90% of standard dosing bupropion: use 95% of standard dosing perphenazine: use 80% of standard dosing haloperidol: use 95% of standard dosing olanzapine: use 105% of standard dosing risperidone: use 90% of standard dosing" } /*,*/];
-    self.tableParams = new NgTableParams({}, { dataset: data });
+   
+    //Pharmacogenomic Report :
+    self.pharmaReportSummary = new NgTableParams({}, {
+      getData: function(params) {
+        // ajax request to api
+        $scope.profile_id = "f608edc7fd20b8df";
+        return pharmaReport.getPharmaReportSummary($scope.profile_id)
+          .success(function (data) {
+            params.total(data.length); // recal. page nav controls
+            vm.pharmaReportSummaryResults = data;
+            return data;
+         })
+        .error(function (e) {
+            vm.message = "Sorry, something's gone wrong, please try again later";
+        });
+      }
+    });
+ 
 
+    
 
-
-  
+  //Snpedia
 
     vm.wikiTextList = [];
 

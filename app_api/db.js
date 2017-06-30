@@ -34,6 +34,8 @@ for(var i = 0; i < databases.length; ++i) {
 db.user = db.userdb.import(__dirname+'/models/user.js');
 db.wikiText = db.snpreq.import(__dirname+'/models/wiki_txt_tbl.js');
 db.wikiTags = db.snpreq.import(__dirname+'/models/wiki_tags_tbl.js');
+db.markers = db.userdb.import(__dirname+'/models/markers.js');
+db.rsnum = db.snpreq.import(__dirname+'/models/rsnum.js');
 
 
 //db.sequelize = sequelize;
