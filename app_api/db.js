@@ -1,5 +1,3 @@
-
-
 var Sequelize = require('sequelize');
 var config = require('./config.json');
 
@@ -26,17 +24,18 @@ for(var i = 0; i < databases.length; ++i) {
     var dbPath = config.databases[database];
     db[database] = new Sequelize( dbPath.path,{
         'dialect':'postgres'
-    } );
+    });
 }
 
 
 //db.todo = sequelize.import(__dirname+'/models/todo.js');
 db.user = db.userdb.import(__dirname+'/models/user.js');
+db.annotations = db.userdb.import(__dirname+'/models/annotations.js');
 db.wikiText = db.snpreq.import(__dirname+'/models/wiki_txt_tbl.js');
 db.wikiTags = db.snpreq.import(__dirname+'/models/wiki_tags_tbl.js');
 db.markers = db.userdb.import(__dirname+'/models/markers.js');
 db.rsnum = db.snpreq.import(__dirname+'/models/rsnum.js');
-
+db.pharmgkb = db.snpreq.import(__dirname+'/models/pharmgkb.js');
 
 //db.sequelize = sequelize;
 db.Sequelize = Sequelize;

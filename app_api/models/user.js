@@ -43,24 +43,24 @@ module.exports = function (sequelize, DataTypes) {
                 }
             },
             classMethods: {
-                findByToken:function(token){
-                    return new Promise(function(resolve,reject){
-                        try{
-                            var decodedJwt = jwt.verify(token,'qwerty098');
-                            var bytes = cryptojs.AES.decrypt(decodedJwt.token,'abc123!@#');
+                findByToken: function (token) {
+                    return new Promise(function (resolve, reject) {
+                        try {
+                            var decodedJwt = jwt.verify(token, 'qwerty098');
+                            var bytes = cryptojs.AES.decrypt(decodedJwt.token, 'abc123!@#');
                             var tokenData = JSON.parse(bytes.toString(cryptojs.enc.Utf8));
-                            user.findById(tokenData.id).then(function(user){
-                                if(user){
+                            user.findById(tokenData.id).then(function (user) {
+                                if (user) {
                                     resolve(user);
                                 }
-                                else{
+                                else {
                                     reject();
                                 }
-                            },function(e){
+                            }, function (e) {
                                 reject();
                             });
                         }
-                        catch(e){
+                        catch (e) {
                             reject();
                         }
                     });
@@ -83,30 +83,30 @@ module.exports = function (sequelize, DataTypes) {
                                     resolve(user);
                                 }
                                 else {
-                                   return reject();
+                                    return reject();
                                 }
                             }, function (e) {
-                                   reject();
+                                reject();
                             })
-                            .catch(function (e) {
-                                 reject();
-                            });
+                                .catch(function (e) {
+                                    reject();
+                                });
                         }
                     })
                 }
             },
             instanceMethods: {
-                generateToken:function(type){
-                    if(!_.isString(type)){
+                generateToken: function (type) {
+                    if (!_.isString(type)) {
                         return undefined;
                     }
-                    try{
-                        var stringData = JSON.stringify({id:this.get('id'),type:type});
-                        var encryptedData = cryptojs.AES.encrypt(stringData,'abc123!@#').toString();
-                        var token = jwt.sign({token:encryptedData},'qwerty098');
+                    try {
+                        var stringData = JSON.stringify({ id: this.get('id'), type: type });
+                        var encryptedData = cryptojs.AES.encrypt(stringData, 'abc123!@#').toString();
+                        var token = jwt.sign({ token: encryptedData }, 'qwerty098');
                         return token;
                     }
-                    catch(e){
+                    catch (e) {
                         return undefined;
                     }
                 },

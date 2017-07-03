@@ -1,25 +1,25 @@
 module.exports = function(sequelize,DataTypes){
     return sequelize.define('annotations',{
     // rsid
-    id:{
+    rs_number:{
         type:DataTypes.STRING,
         allowNull:false,
     },
     //Type of the report
-    report_type:{
+    report:{
         type:DataTypes.STRING,
         allowNull:false, 
     },
-    allele_1:{
+    allele1:{
         type:DataTypes.STRING,
         allowNull:false, 
     },
-    allele_2:{
+    allele2:{
         type:DataTypes.STRING,
         allowNull:false, 
     },
     //Data to be saved or fetched
-    description:{
+    annotation:{
         type:DataTypes.STRING,
         allowNull:false, 
     },

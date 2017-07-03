@@ -17,5 +17,7 @@ router.post('/login', ctrlAuth.login);
 router.get('/snpediaWiki', snpediaCtrl.getWikiText);
 router.get('/snpediaWikiTags', snpediaCtrl.getWikiTags);
 router.get('/getPharmacogenomicReport', pharmaGenomicCtrl.getPharmacogenomicReport);
+router.get('/getSnpediaDetails', pharmaGenomicCtrl.getSnpediaDetails);
+
 
 module.exports = router;
