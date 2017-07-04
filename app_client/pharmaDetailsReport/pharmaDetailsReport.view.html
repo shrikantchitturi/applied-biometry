@@ -1,0 +1,25 @@
+<navigation></navigation>
+
+<div class="container">
+
+ <page-header content="vm.pageHeader"></page-header>
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4">
+      <label for="filter">Filter results</label>
+      <input id="filter" type="text" , name="filter" , ng-model="textFilter">
+    </div>
+    <table ng-table="vm.pharmaReportDetails" class="table" show-filter="true">
+      <tr ng-repeat="details in vm.pharmaReportDetailsResults">
+        <td title="'RS'" filter="{ rs: 'text'}" sortable="'rs'">
+          {{details.rsid}}</td>
+        <td title="'PharmaGKB'" filter="{ pharmagkb: 'text'}" sortable="'pharmagkb'">
+          {{details.pharmGKB}}</td>
+        <td title="'Snpedia'" filter="{ snpedia: 'text'}" sortable="'snpedia'">
+          {{details.snpedia}}</td>
+      </tr>
+    </table>
+
+</div>
+  <footer-generic></footer-generic>
+</div>

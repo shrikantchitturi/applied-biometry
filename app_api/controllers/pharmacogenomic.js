@@ -79,8 +79,8 @@ module.exports.getPharmacogenomicReport = function (req, res) {
     });
 };
 
-//Get snpedia details
-module.exports.getSnpediaDetails = function (req, res) {
+//Get Pharmacogenomics Snpedia details
+module.exports.getPharmacogenomicDetails = function (req, res) {
     var profile_id = req.query.profile_id;
     var wiki_txt = [];
     var pharmgkb = [];

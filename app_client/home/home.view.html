@@ -3,11 +3,37 @@
 <div class="container">
   <page-header content="vm.pageHeader"></page-header>
 
+<p>
+<a href="/#pharmaSummaryReport">Pharmacogenomic Summary Report</a>
+</p>
 
+<p>
+<a href="/#pharmaDetailsReport">Pharmacogenomic Details Report</a>
+</p>
+
+<p>
+<a href="/#snpediaData">Snpedia Data</a>
+</p>
+
+<p>
+<a href="url">Summary Results</a>
+</p>
+
+<p>
+<a href="url">Variants Overview</a>
+</p>
+
+<p>
+<a href="url">Variants Details</a>
+</p>
+
+<p>
+<a href="url">Annotations Entry</a>
+<p>
 
   <div class="container">
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">Pharmacogenomic Report</a></li>
+      
       <li><a data-toggle="tab" href="#snpedia">SNPedia Data</a></li>
       <li><a data-toggle="tab" href="#summary">Summary Results</a></li>
       <li><a data-toggle="tab" href="#variants-overview">Variants Overview</a></li>
@@ -16,76 +42,7 @@
     </ul>
 
     <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
-        <h3>Pharmacogenomic Report</h3>
-
-        <div class="row">
-          <div class="col-xs-12 col-sm-4">
-            <label for="filter">Filter results</label>
-            <input id="filter" type="text" , name="filter" , ng-model="textFilter">
-          </div>
-      <table ng-table="vm.pharmaReportSummary" class="table" show-filter="true">
-        <tr ng-repeat="report in vm.pharmaReportSummaryResults">
-          <td title="'RS'" filter="{ rs: 'text'}" sortable="'rs'">
-            {{report.rs}}</td>
-          <td title="'Gene'" filter="{ gene: 'number'}" sortable="'gene'">
-            {{report.gene}}</td>
-          <td title="'Summary'" filter="{ summary: 'number'}" sortable="'summary'">
-            {{report.summary}}</td>
-          <td title="'Missens/Ref'" filter="{ missens: 'number'}" sortable="'missens'">
-            {{report.missens}}</td>
-          <td title="'Variant'" filter="{ variant: 'number'}" sortable="'variant'">
-            {{report.variant}}</td>
-          <td title="'Annotation'" filter="{ annotation: 'number'}" sortable="'annotation'">
-            {{report.annotation}}</td>
-        </tr>
-     </table>
-          <!-- Pharmacogenomic report  -->
-          <!--<table class="table" st-pipe="vm.getPharmacogenomicSummary" st-table="vm.pharmaReportSummary">
-            <thead>
-              <tr>
-                <th st-sort="rs">RS</th>
-                <th st-sort="gene">Gene</th>
-                <th st-sort="summary">Summary</th>
-                <th st-sort="missens">Missens/Ref</th>
-                <th st-sort="variant">Variant</th>
-                <th st-sort="annotation">Annotation</th>
-              </tr>
-              <tr>
-                <th><input st-search="rs" /></th>
-                <th><input st-search="gene" /></th>
-                <th><input st-search="summary" /></th>
-                <th><input st-search="missens" /></th>
-                <th><input st-search="variant" /></th>
-                <th><input st-search="annotation" /></th>
-              </tr>
-            </thead>
-            <tbody ng-show="!vm.ispharmaReportLoading">
-              <tr ng-repeat="report in vm.pharmaReportSummary">
-                <td> {{report.rs}} </td>
-                <td> {{report.gene}} </td>
-                <td> {{report.summary}} </td>
-                <td> {{report.missens}} </td>
-                <td> {{report.variant}} </td>
-                <td> {{report.annotation}} </td>
-              </tr>
-            </tbody>
-            <tbody ng-show="vm.ispharmaReportLoading">
-              <tr>
-                <td colspan="2" class="text-center">Loading ... </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td class="text-center" st-pagination="" st-items-by-page="10" colspan="2">
-                </td>
-              </tr>
-            </tfoot>
-          </table>-->
-
-        </div>
-      </div>
-
+      
       <!-- Snpedia data -->
       <div id="snpedia" class="tab-pane fade">
 
@@ -127,18 +84,7 @@
         </div>
 
 
-        <table class="table no-margin" ng-table="vm.wikiTextParams" show-filter="true">
-          <tbody>
-            <tr ng-repeat="wikiText in $data">
-              <td title="'title'" sortable="'title'" filter="{title:'text'}">
-                {{wikiText.title}}
-              </td>
-              <td title="'wikiTxt'" sortable="'wikiTxt'" filter="{wikiTxt:'text'}">
-                {{wikiText.wikiTxt}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+       
 
         <h3>Wiki Tags</h3>
         <table class="table no-margin" ng-table="vm.wikiTagsParams" show-filter="true">

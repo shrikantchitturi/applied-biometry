@@ -1,6 +1,6 @@
 (function () {
 
-  angular.module('loc8rApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap','ngTable','smart-table']);
+  angular.module('loc8rApp', ['ngRoute', 'ngSanitize', 'ui.bootstrap','ngTable','smart-table','ngResource']);
 
   function config ($routeProvider, $locationProvider) {
     $routeProvider
@@ -14,9 +14,19 @@
         controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
-      .when('/about', {
-        templateUrl: '/common/views/genericText.view.html',
-        controller: 'aboutCtrl',
+      .when('/pharmaSummaryReport', {
+        templateUrl: '/pharmaSummaryReport/pharmaSummaryReport.view.html',
+        controller: 'pharmaSummaryReportCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/pharmaDetailsReport', {
+        templateUrl: '/pharmaDetailsReport/pharmaDetailsReport.view.html',
+        controller: 'pharmaDetailsReportCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/snpediaData', {
+        templateUrl: '/snpediaData/snpediaData.view.html',
+        controller: 'snpediaDataCtrl',
         controllerAs: 'vm'
       })
       .when('/register', {

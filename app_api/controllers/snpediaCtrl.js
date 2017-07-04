@@ -3,8 +3,9 @@ var _ = require('underscore');
 
 
 module.exports.getWikiText = function(req, res) {
-    var offset = req.query.offset || 0;
-    var limit = req.query.limit || 10;
+    var limit = Number(req.query.limit) || 10;
+    var page = Number(req.query.page) || 1;
+    var offset = (page - 1 ) * limit ;
     db.wikiText.findAll({
         offset: offset,
         limit:limit,

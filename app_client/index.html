@@ -5,17 +5,16 @@
     <title></title>
     <link rel="stylesheet" href="/bootstrap/css/amelia.bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <!--<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">-->
     <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
   </head>
   <body ng-view>
     <script src="/angular/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="/lib/angular-route.min.js"></script>
     <script src="/lib/angular-sanitize.min.js"></script>
     <script src="/lib/ui-bootstrap-custom-0.12.0.min.js"></script>
     <script src="/lib/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-    <!--<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>-->
     <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
     <script src="/angular-smart-table/smart-table.js"></script>
@@ -25,13 +24,17 @@
   <script src= "/app.js"></script>
   <script src= "/home/home.controller.js"></script>
   <script src= "/about/about.controller.js"></script>
+  <script src= "/pharmaSummaryReport/pharmaSummaryReport.controller.js"></script>
+  <script src= "/pharmaDetailsReport/pharmaDetailsReport.controller.js"></script>
+  <script src= "/snpediaData/snpediaData.controller.js"></script>
   <script src= "/auth/login/login.controller.js"></script>
   <script src= "/auth/register/register.controller.js"></script>
+  <script src= "/pharmaSummaryReport/pharmaSummaryReport.service.js"></script>
+  <script src= "/pharmaDetailsReport/pharmaDetailsReport.service.js"></script>
+  <script src= "/snpediaData/snpediaData.service.js"></script>
   <script src= "/common/services/authentication.service.js"></script>
   <script src= "/common/services/geolocation.service.js"></script>
   <script src= "/common/services/loc8rData.service.js"></script>
-  <script src= "/common/services/snpedia.service.js"></script>
-  <script src= "/common/services/pharmaReport.service.js"></script>
   <script src= "/common/filters/formatDistance.filter.js"></script>
   <script src= "/common/filters/addHtmlLinebreaks.filter.js"></script>
   <script src= "/common/directives/navigation/navigation.controller.js"></script>

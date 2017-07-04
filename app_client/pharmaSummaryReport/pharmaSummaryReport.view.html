@@ -1,0 +1,31 @@
+<navigation></navigation>
+
+<div class="container">
+
+ <page-header content="vm.pageHeader"></page-header>
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4">
+      <label for="filter">Filter results</label>
+      <input id="filter" type="text" , name="filter" , ng-model="textFilter">
+    </div>
+    <table ng-table="vm.pharmaReportSummary" class="table" show-filter="true">
+      <tr ng-repeat="report in vm.pharmaReportSummaryResults">
+        <td title="'RS'" filter="{ rs: 'text'}" sortable="'rs'">
+          {{report.rs}}</td>
+        <td title="'Gene'" filter="{ gene: 'number'}" sortable="'gene'">
+          {{report.gene}}</td>
+        <td title="'Summary'" filter="{ summary: 'number'}" sortable="'summary'">
+          {{report.summary}}</td>
+        <td title="'Missens/Ref'" filter="{ missens: 'number'}" sortable="'missens'">
+          {{report.missens}}</td>
+        <td title="'Variant'" filter="{ variant: 'number'}" sortable="'variant'">
+          {{report.variant}}</td>
+        <td title="'Annotation'" filter="{ annotation: 'number'}" sortable="'annotation'">
+          {{report.annotation}}</td>
+      </tr>
+    </table>
+
+</div>
+  <footer-generic></footer-generic>
+</div>
